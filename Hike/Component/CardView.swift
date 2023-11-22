@@ -40,9 +40,13 @@ struct CardView: View {
                         Spacer()
                         Button {
                             // Action
-                            print("the button was pressed")
+                            isShowingSheet.toggle()
                         } label: {
                             CustomButtonView()
+                        }.sheet(isPresented: $isShowingSheet) {
+                            SettingsView()
+                                .presentationDragIndicator(.visible)
+                                .presentationDetents([.medium, .large])
                         }
                     }
                     
